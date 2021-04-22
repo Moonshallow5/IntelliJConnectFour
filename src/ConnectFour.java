@@ -4,6 +4,7 @@
  *
  * @author David Symons
  */
+// cool
 public final class ConnectFour
 {
     /**
