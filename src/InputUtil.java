@@ -6,6 +6,7 @@ import java.util.Scanner;
  *
  * @author David Symons
  */
+//lo
 public final class InputUtil
 {
     private static final Scanner sc = new Scanner(System.in);
