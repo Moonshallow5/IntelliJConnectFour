@@ -1,15 +1,9 @@
-
-
 /**
  * This file is to be completed by you.
  *
  * @author <s2093748>
  */
-//jk
 public final class TextView {
-
-
-
 
     public TextView() {
     }

@@ -2,7 +2,6 @@
 //import java.io.FileWriter;
 //import java.io.IOException;
 
-
 /**
  * This file is to be completed by you.
  *
@@ -28,8 +27,8 @@ public final class Model {
     // ========================================================================
     // ================================ FIELDS ================================
     // ========================================================================
-    private int nrRows;
-    private int nrCols;
+    private final int nrRows;
+    private final int nrCols;
     public char[][] board;
 
 
@@ -80,9 +79,7 @@ public final class Model {
 
     public boolean isMoveValid(int move, char[][] board) {
         if (move != -1) {// This is the move if someone concedes
-            if (move < 0 || move >= board[0].length || board[0][move] != ' ') {
-                return false;// The move is only valid if the person didn't enter an integer out of bounds and if the column is not full else the person would have to reenter its move by the loop in controller
-            }
+            return move >= 0 && move < board[0].length && board[0][move] == ' ';// The move is only valid if the person didn't enter an integer out of bounds and if the column is not full else the person would have to reenter its move by the loop in controller
 
         }
         return true;
@@ -173,8 +170,8 @@ public final class Model {
     public boolean isWinnerVertical(char player, char[][] board) {
         for (int col = 0; col < board[0].length; col++) {
             int colCount = 0;
-            for (int row = 0; row < board.length; row++) {
-                if (board[row][col] == player) {//Row increments by 1 and column remains the same if same player in a row vertically colCount increments by 1
+            for (char[] chars : board) {
+                if (chars[col] == player) {//Row increments by 1 and column remains the same if same player in a row vertically colCount increments by 1
                     colCount++;
                 } else {
                     colCount = 0;//else if another player comes and blocks the vertical same players colCount becomes 0
@@ -188,10 +185,10 @@ public final class Model {
         }return false;
     }
     public boolean isWinnerHorizontal(char player, char[][] board) {
-        for (int row = 0; row < board.length; row++) {
+        for (char[] chars : board) {
             int rowCount = 0;
-            for (int col = 0; col < board[row].length; col++) {
-                if (board[row][col] == player) {//column increments and row remain the same and if its the same player in a row horizontally rowCount increases by 1
+            for (char aChar : chars) {
+                if (aChar == player) {//column increments and row remain the same and if its the same player in a row horizontally rowCount increases by 1
                     rowCount++;
                 } else {
 
@@ -201,7 +198,8 @@ public final class Model {
                     return true;
                 }
             }
-        }return false;
+        }
+        return false;
     }
     public boolean isWinnerDownDiagonal(char player,char[][]board) {
         int connect = numberToConnect;
