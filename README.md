@@ -1,1 +1,1 @@
-# IntelliJConnectFour
+Connect Four
